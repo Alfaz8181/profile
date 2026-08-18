@@ -186,7 +186,7 @@ function initTypingEffect() {
     'Web Developer 💻',
     'Java Learner ☕',
     'Frontend Builder 🎨',
-    'App Developer 📱',
+    'Quick Learner ',
     'Problem Solver 🧠',
   ];
 
