@@ -491,7 +491,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-wave svg { display: block; width: 100%; height: 60px; }
 
 /* ========== ABOUT SECTION ========== */
-.about { background: var(--bg-2); }
+.about {
+  background: var(--bg-2);
+  padding: 80px 0; /* Add padding for section spacing */
+}
 
 .about-grid {
   display: grid;
@@ -508,11 +511,15 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .image-frame {
   position: relative;
-  width: 280px; height: 320px;
+  /* Removed fixed width/height for responsiveness */
+  width: 100%;
+  max-width: 320px; /* Max width on large screens */
 }
 
 .profile-placeholder {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: auto; /* Height should be auto to show full person */
+  aspect-ratio: 280 / 320; /* Maintain original aspect ratio */
   border-radius: var(--radius-lg);
   background: var(--surface-2);
   border: 1px solid var(--border);
@@ -526,8 +533,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 500;
   position: relative;
   z-index: 1;
-  overflow: hidden;
+  overflow: hidden; /* Important for the gradient pseudo-element */
 }
+
+/* Fix for profile-placeholder height */
+.profile-placeholder {
+  height: auto !important; /* Force auto height to prevent clipping top */
+  max-height: none !important; /* Force remove any other max height */
+}
+
+/* Keep the pseudo-element for the border effect */
 .profile-placeholder::before {
   content: '';
   position: absolute;
@@ -543,9 +558,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .image-glow {
   position: absolute;
-  bottom: -40px; left: 50%;
+  bottom: -40px;
+  left: 50%;
   transform: translateX(-50%);
-  width: 200px; height: 100px;
+  width: 200px;
+  height: 100px;
   background: var(--primary);
   border-radius: 50%;
   filter: blur(50px);
@@ -560,10 +577,33 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: var(--radius);
   padding: 12px 20px;
   text-align: center;
+  /* Floating animation */
   animation: floatShape 5s ease-in-out infinite;
+  z-index: 0; /* Important: float bubbles *behind* image and content stack */
 }
-.stat-1 { bottom: -20px; left: -30px; animation-delay: 0s; }
-.stat-2 { top: 20px; right: -30px; animation-delay: -2s; }
+
+/* Floating animation keyframes */
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.stat-1 {
+  bottom: -20px;
+  left: -30px;
+  animation-delay: 0s;
+}
+
+.stat-2 {
+  top: 20px;
+  right: -30px;
+  animation-delay: -2s;
+}
+
 .stat-num {
   display: block;
   font-family: var(--font-display);
@@ -574,10 +614,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .stat-label {
   font-size: 0.75rem;
   color: var(--text-muted);
   font-weight: 500;
+}
+
+.about-content-column {
+  position: relative;
+  z-index: 1; /* Keep content column above stat bubbles */
 }
 
 .about-name {
@@ -586,12 +632,17 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 700;
   margin-bottom: 16px;
 }
+
 .about-text {
   color: var(--text-muted);
   margin-bottom: 16px;
   line-height: 1.8;
 }
-.about-text strong { color: var(--text); font-weight: 600; }
+
+.about-text strong {
+  color: var(--text);
+  font-weight: 600;
+}
 
 .about-info-grid {
   display: grid;
@@ -599,6 +650,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   gap: 12px;
   margin: 28px 0;
 }
+
 .info-item {
   display: flex;
   align-items: center;
@@ -609,15 +661,75 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: var(--radius);
   transition: var(--transition);
 }
+
 .info-item:hover {
   border-color: rgba(99, 102, 241, 0.3);
   background: var(--surface-2);
 }
-.info-icon { font-size: 1.3rem; }
-.info-item div { display: flex; flex-direction: column; }
-.info-item strong { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-.info-item span { font-size: 0.9rem; color: var(--text); font-weight: 500; }
 
+.info-icon {
+  font-size: 1.3rem;
+}
+
+.info-item div {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item strong {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.info-item span {
+  font-size: 0.9rem;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ========== RESPONSIVE MEDIA QUERIES ========== */
+
+/* For larger phones and tablets (around 1024px) */
+@media (max-width: 1024px) {
+  .about-grid {
+    gap: 50px;
+  }
+}
+
+/* For mobile devices (up to 768px) */
+@media (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr; /* Stack columns vertically */
+    gap: 40px;
+  }
+
+  .about-image-wrap {
+    justify-content: center; /* Keep image centered */
+    order: -1; /* Place image wrap on top when stacked */
+    margin-bottom: 30px; /* Space between image and content */
+  }
+
+  .image-frame {
+    /* Scale image on mobile to be a bit smaller */
+    max-width: 260px;
+  }
+
+  /* Increase gap to prevent overlap on mobile */
+  .stat-1 {
+    left: -15px; /* Pull it slightly to not overlap */
+  }
+
+  .stat-2 {
+    right: -15px; /* Pull it slightly to not overlap */
+  }
+  
+  .about-info-grid {
+    grid-template-columns: 1fr; /* Info grid should stack vertically on mobile */
+  }
+}
 /* Skill Bars */
 .skill-bars h4 {
   font-family: var(--font-display);
