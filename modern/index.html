@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alfaz Kaladagi | Web &amp; Software Developer</title>
+<meta name="description" content="Portfolio of Alfaz Kaladagi, Computer Science Engineering student (2027) building responsive web applications and backend systems.">
+
+<!-- AK SVG Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='25' fill='%230a0a1a'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' fill='%236366f1' font-family='sans-serif' font-weight='900' font-size='48' letter-spacing='-2'>AK</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="glow" aria-hidden="true"></div>
+<div class="progress" id="progress"></div>
+
+<header class="nav" id="nav">
+  <a href="#home" class="logo">alfaz<span>.</span></a>
+  <button class="burger" id="burger" aria-label="Menu"><i></i><i></i></button>
+  <nav id="menu">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
+    <a href="#contact" class="cta">Hire me</a>
+  </nav>
+</header>
+
+<main>
+<section id="home" class="hero">
+  <div class="hero-text">
+    <p class="chip"><b></b> Open to internships &amp; fresher roles</p>
+    <h1><span class="line">Hi, I'm</span><span class="line grad">Alfaz Kaladagi</span></h1>
+    <p class="role">I build <span id="typed"></span><i class="caret"></i></p>
+    <p class="lead">Computer Science Engineering student (Graduating 2027) crafting responsive web applications with practical, scalable backend functionality.</p>
+    <div class="btns">
+      <a href="#projects" class="btn primary">View projects</a>
+      <a href="Alfaz-Resume.pdf" class="btn ghost" target="_blank" rel="noopener">View Resume</a>
+    </div>
+    <div class="social">
+      <a href="https://github.com/alfaz8181" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/alfaz-kaladagi-aa955b305" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:alfaz.info81@gmail.com">Email</a>
+    </div>
+  </div>
+  <div class="hero-photo tilt">
+    <div class="ring"></div><div class="ring r2"></div>
+    <img src="profile2.png" alt="Alfaz Kaladagi" width="400" height="457">
+    <span class="float f1">HTML · CSS · JS</span><span class="float f2">Python · Java</span><span class="float f3">MySQL · MongoDB</span>
+  </div>
+  <a href="#about" class="scroll" aria-label="Scroll down"><i></i></a>
+</section>
+
+<section id="about" class="sec">
+  <h2 class="title rv">About me</h2>
+  <div class="about-grid">
+    <p class="rv big">Computer Science Engineering student with hands-on experience in full-stack web development, backend engineering, and database management. Skilled in building responsive web applications with modern technologies.</p>
+    <div class="rv">
+      <p class="muted">Strong analytical and engineering foundation focused on developing practical software, maintainable code, and continuously improving technical skills.</p>
+      <ul class="facts">
+        <li><b>Location</b>Ballari, Karnataka - 583101</li>
+        <li><b>Phone</b><a href="tel:+917483838990">+91 74838 38990</a></li>
+        <li><b>Graduation</b>B.Tech CSE, 2027</li>
+      </ul>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat rv"><strong data-n="8">0</strong><span>Live projects</span></div>
+    <div class="stat rv"><strong data-n="8.73" data-d="2">0</strong><span>Diploma CGPA</span></div>
+    <div class="stat rv"><strong data-n="7.04" data-d="2">0</strong><span>6th Sem CGPA</span></div>
+    <div class="stat rv"><strong data-n="2027">0</strong><span>Graduation year</span></div>
+  </div>
+</section>
+
+<section id="services" class="sec">
+  <h2 class="title rv">What I do</h2>
+  <div class="cards3">
+    <article class="card rv tilt"><span class="ico">⌘</span><h3>Responsive web apps</h3><p>Mobile-first interfaces with semantic HTML5, CSS3 and JavaScript.</p></article>
+    <article class="card rv tilt"><span class="ico">⚙</span><h3>Backend &amp; databases</h3><p>Working logic and data storage with Python, Java, MySQL and MongoDB.</p></article>
+    <article class="card rv tilt"><span class="ico">✦</span><h3>AI-powered tools</h3><p>Applications that use the Google Gemini API for automated data extraction and translation.</p></article>
+  </div>
+</section>
+
+<section id="projects" class="sec">
+  <div class="proj-head-row">
+    <div>
+      <h2 class="title rv">Featured Projects</h2>
+      <p class="muted rv hint">Slides automatically every few seconds (hover to pause) <i>✦</i></p>
+    </div>
+    <div class="slider-arrows">
+      <button class="arrow-btn" id="slidePrev" aria-label="Previous Project">←</button>
+      <button class="arrow-btn" id="slideNext" aria-label="Next Project">→</button>
+    </div>
+  </div>
+
+  <div class="slider-viewport" id="sliderViewport">
+    <div class="slider-track" id="sliderTrack"></div>
+  </div>
+
+  <div class="slider-dots" id="sliderDots"></div>
+</section>
+
+<section id="skills" class="sec">
+  <h2 class="title rv">Technical skills</h2>
+  <div class="cards3" id="skillGrid"></div>
+</section>
+
+<section id="education" class="sec">
+  <h2 class="title rv">Education</h2>
+  <div class="timeline">
+    <div class="tl rv"><span class="dot"></span><small>2024 – 2027 (7th Sem)</small><h3>Bachelor of Technology (Computer Science &amp; Engineering)</h3><p>Kishkinda University - Ballari · 6th Sem CGPA: 7.04 (Graduating in 2027)</p></div>
+    <div class="tl rv"><span class="dot"></span><small>2021 – 2024</small><h3>Diploma in Computer Science</h3><p>Sanjay Gandhi Polytechnic – Ballari · CGPA: 8.73</p></div>
+    <div class="tl rv"><span class="dot"></span><small>Ongoing</small><h3>Self learning &amp; side projects</h3><p>Building and deploying web applications on Vercel, Render and Cloudflare.</p></div>
+  </div>
+</section>
+
+<section id="contact" class="sec">
+  <h2 class="title rv">Let's work together</h2>
+  <div class="contact-grid">
+    <div class="rv">
+      <p class="big">Have an opportunity, internship role, or project idea? Send a message and I'll reply promptly.</p>
+      <ul class="facts">
+        <li><b>Email</b><a href="mailto:alfaz.info81@gmail.com">alfaz.info81@gmail.com</a></li>
+        <li><b>Phone</b><a href="tel:+917483838990">+91 74838 38990</a></li>
+        <li><b>GitHub</b><a href="https://github.com/alfaz8181" target="_blank" rel="noopener">github.com/alfaz8181</a></li>
+        <li><b>LinkedIn</b><a href="https://www.linkedin.com/in/alfaz-kaladagi-aa955b305" target="_blank" rel="noopener">Alfaz Kaladagi</a></li>
+      </ul>
+    </div>
+    <form class="rv form" id="form">
+      <label>Name<input name="name" required autocomplete="name"></label>
+      <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      <label>Message<textarea name="message" rows="4" required></textarea></label>
+      <button class="btn primary" type="submit">Send message</button>
+      <p class="status" id="status" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<div class="version-toggle-wrap">
+  <a href="/classic/" class="version-toggle-link">
+    <span class="version-dot"></span>
+    <span>Switch to Classic UI</span>
+  </a>
+</div>
+
+<footer>
+  <p>© <span id="yr">2026</span> <strong class="footer-highlight">Alfaz Kaladagi</strong>. Built with HTML, CSS and JavaScript.</p>
+</footer>
+<button class="top" id="top" aria-label="Back to top">↑</button>
+
+<!-- EmailJS Official Browser SDK v4 -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
